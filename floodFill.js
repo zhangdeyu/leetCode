@@ -35,7 +35,9 @@ var floodFill = function(image, sr, sc, newColor) {
     var width = image[0].length;
     var oldColor = image[sr][sc];
 
-    dfs(image, sr, sc, oldColor, newColor);
+    if (oldColor !== newColor) {
+        dfs(image, sr, sc, oldColor, newColor);
+    }
     function dfs(image, sr, sc, color, newColor) {
         if (image[sr][sc] === color) {
             image[sr][sc] = newColor;
