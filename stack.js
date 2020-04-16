@@ -134,31 +134,13 @@ var preOrder = function(root) {
 }
 
 // 后序遍历 递归算法
-// var postOrder = function(root) {
-//     if (root && root.val) {
-//         var left = postOrder(root.left);
-//         var right = postOrder(root.right);
-//         return [].concat(right, root.val, left);
-//     }
-//     return [];
-// }
-// 后序遍历 迭代算法
 var postOrder = function(root) {
-    var stack = [];
-    var res = [];
-    var curr = root;
-    while(curr || stack.length) {
-        if (curr) {
-            stack.push(curr);
-            curr = curr.right;
-        } else {
-            curr = stack.pop();
-            res.push(curr.val);
-            curr = curr.left;
-        }
+    if (root && root.val) {
+        var left = postOrder(root.left);
+        var right = postOrder(root.right);
+        return [].concat(right, root.val, left);
     }
-
-    return res;
+    return [];
 }
 
 
